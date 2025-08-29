@@ -21,3 +21,4 @@ public class CucumberTest {
 }
 
 // if we did not specify the glue property name it will search for step defination inside cucumber tets package or sub package
+//SelectClasspathResource("") if feature file inside src/test/resource
