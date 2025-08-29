@@ -13,8 +13,21 @@ import static io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("features")   // folder under src/test/resources/features
-@ConfigurationParameter(key = PLUGIN_PROPERTY_NAME, value = "pretty",
-                       key = GLUE_PROPERTY_NAME,  value = "com.example.steps")
+@IncludeTags("signup") // only run the scenario where @signup in tagged
+@ConfigurationParameter(
+    key = io.cucumber.junit.platform.engine.Constants.PLUGIN_PROPERTY_NAME,
+    value = "pretty"
+)
+@ConfigurationParameter(
+    key = io.cucumber.junit.platform.engine.Constants.GLUE_PROPERTY_NAME,
+    value = "com.example.steps"
+)
+ // tag filter only run scenario where @somke is used
+@ConfigurationParameter(
+    key = io.cucumber.junit.platform.engine.Constants.FILTER_TAGS_PROPERTY_NAME,
+    value = "@smoke"
+)
+ 
 @CucumberContextConfiguration
 @SpringBootTest()
 public class CucumberTest {
